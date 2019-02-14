@@ -1,9 +1,11 @@
 const express = require("express")
     , api     = require("./api")
     , parser  = require("body-parser")
+    , mongo   = require("mongoose")
+    , config  = require("./config.json")
     , app     = express( );
 
-
+mongo.connect(config.database_url);
 
 app.use(parser.urlencoded({
 	extended: true
@@ -11,14 +13,8 @@ app.use(parser.urlencoded({
 
 app.use(parser.json());
 
-app._router.stack.forEach(function(r){
-  if (r.route && r.route.path){
-    console.log(r.route.path)
-  }
-})
-
 app.use(api);
 
-app.listen(3000, ( ) => {
+app.listen(config.SERVER_PORT, ( ) => {
     console.log("listening on port 3000");
 })
