@@ -2,17 +2,15 @@ const express = require("express")
     , Channel = require("../../models/channels")
     , router  = express.Router( );
 
-router.post("/add", function(req, res) {
+router.post("/delete", function(req, res) {
     if (!req.body.name)
         return res.json({success: false, error: ["No name provided"]});
 
-    let Chan = new Channel({name: req.body.name});
-    Chan.save(function(err) {
+    Channel.remove({name: req.body.name}, function(err) {
         if (err)
-            return res.json({success: false, error: ["that name is already taken"]});
-        else
-            return res.json({success: true});
+            throw err;
     });
+    return res.json({success: true});
 });
 
 module.exports = router;

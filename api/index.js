@@ -1,7 +1,8 @@
 const express = require("express")
     , user    = require("./users")
+    , channel = require("./channel")
     , router  = express.Router( );
 
-router.use("/api", user);
-
+router.use("/user", user);
+router.use("/channel", channel)
 module.exports = router;
