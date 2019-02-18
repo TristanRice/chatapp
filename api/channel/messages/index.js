@@ -3,7 +3,7 @@ const express = require("express")
     , send    = require("./send")
     , router  = express.Router( );
 
-router.get("/:channel/messages", function(req, res)) {
+router.get("/:channel/messages", function(req, res) {
     const channel = req.params.channel;
 
     Channel.find({name: channel}, function(err, Channnel) {

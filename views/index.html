@@ -14,9 +14,11 @@
                     {{ member.nick }}
                 </li>
             </ul>
+            <input v-model="input_message" v-on:keyup.enter="send_message()" placeholder="Your message goess here">
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
         <script src="/static/js/script.js">
         </script>
     </body>
